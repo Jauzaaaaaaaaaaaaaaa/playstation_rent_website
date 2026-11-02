@@ -9,6 +9,11 @@ include "auth.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Data - Rental Playstation</title>
     <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atelier/atelier.css">
+<link rel="stylesheet" href="atelier/theme.css">
+<script src="atelier/theme.js"></script>
+<script src="atelier/atelier.js"></script>
 </head>
 <body>
 
@@ -24,6 +29,7 @@ include "auth.php";
         </div>
 
         <form action="simpan.php" method="POST" class="modern-form">
+            <?php echo csrf_field(); ?>
             <div class="form-grid">
                 <div class="form-group">
                     <label>Nama Peminjam</label>
@@ -32,7 +38,7 @@ include "auth.php";
 
                 <div class="form-group">
                     <label>No HP</label>
-                    <input type="text" name="no_hp" placeholder="Contoh: 081234567890" required>
+                    <input type="text" name="no_hp" placeholder="Contoh: 081200007890" required>
                 </div>
 
                 <div class="form-group">

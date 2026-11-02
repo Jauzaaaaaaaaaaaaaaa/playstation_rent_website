@@ -1,8 +1,9 @@
 <?php
 include "auth.php";
+require_post_csrf();
 include "koneksi.php";
 
-$id = (int) ($_GET['id'] ?? 0);
+$id = (int) ($_POST['id'] ?? 0);
 
 if ($id > 0) {
     $stmt = $conn->prepare("DELETE FROM dataps WHERE id = ?");
@@ -12,4 +13,3 @@ if ($id > 0) {
 
 header("Location: index.php");
 exit;
-?>

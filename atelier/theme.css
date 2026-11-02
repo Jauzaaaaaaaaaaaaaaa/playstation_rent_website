@@ -1,0 +1,87 @@
+/* RENTAL PLAYSTATION: dasbor konsol. Biru neon, empat simbol tombol, sudut terpotong. */
+:root {
+  --bg: #04060e; --bg-soft: #080c1a; --card: rgba(13, 19, 40, .86); --card-solid: #0d1328; --primary: #1f6dff; --primary-dark: #7eb1ff; --secondary: #1f6dff;
+  --text: #e8eeff; --muted: #8b98b9; --line: rgba(126, 177, 255, .16); --shadow: 0 0 0 transparent; --radius: 4px;
+  --tri: #39d6a6; --cir: #ff5d6c; --cro: #6da4ff; --squ: #e77fd3;
+  --at-accent: #04060e; --at-on-accent: #e8eeff; --at-deep: #1f6dff; --at-mono: "Chakra Petch", sans-serif;
+  --cut: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+}
+html { background: #04060e; }
+body, body.at { font-family: "Inter", Arial, sans-serif; color: var(--text); background: radial-gradient(70% 50% at 80% 0, rgba(31, 109, 255, .28), transparent 70%), #04060e !important; background-attachment: fixed !important; }
+body::before { background-image: linear-gradient(rgba(126, 177, 255, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(126, 177, 255, .05) 1px, transparent 1px); }
+h1, h2, h3, .eyebrow, .btn, .menu-list a, .badge, .stat-card strong, label, th { font-family: "Chakra Petch", "Inter", sans-serif !important; }
+.ps-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.ps-bg svg { position: absolute; width: var(--s); height: var(--s); left: var(--x); top: var(--y); opacity: .13; fill: none; stroke-width: 2.4; animation: ps-float var(--t) ease-in-out infinite alternate; }
+@keyframes ps-float { to { transform: translateY(-46px) rotate(24deg); } }
+
+/* Layar pembuka: empat simbol menyala */
+.at-curtain__a, .at-curtain__b { border-radius: 0; inset: 0; }
+.ps-boot { display: grid; justify-items: center; gap: 26px; }
+.ps-boot__row { display: flex; gap: clamp(14px, 3vw, 28px); }
+.ps-boot svg { width: clamp(44px, 9vw, 74px); height: clamp(44px, 9vw, 74px); fill: none; stroke-width: 5; opacity: .12; animation: ps-on .5s var(--d) forwards; }
+.ps-boot__bar { width: min(62vw, 290px); height: 3px; background: rgba(255, 255, 255, .14); overflow: hidden; }
+.ps-boot__bar i { display: block; height: 100%; background: #6da4ff; box-shadow: 0 0 14px #6da4ff; transform: translateX(-100%); animation: ps-bar 1.5s .1s var(--at-ease) forwards; }
+.ps-boot p { margin: 0; font: 600 .78rem "Chakra Petch", sans-serif; letter-spacing: .34em; color: #8b98b9; }
+@keyframes ps-on { to { opacity: 1; filter: drop-shadow(0 0 13px currentColor); } }
+@keyframes ps-bar { to { transform: none; } }
+
+/* Panel */
+.sidebar, .hero-card, .content-card, .stat-card, .form-card, .login-card { background: var(--card); border: 0; backdrop-filter: blur(12px); clip-path: var(--cut); box-shadow: inset 0 0 0 1px var(--line); border-radius: 0; color: var(--text); }
+.sidebar { background: rgba(8, 12, 26, .9); }
+.brand-icon { border-radius: 0; background: #1f6dff; box-shadow: 0 0 26px rgba(31, 109, 255, .6); clip-path: var(--cut); }
+.hero-card { background: linear-gradient(115deg, rgba(31, 109, 255, .3), rgba(13, 19, 40, .86) 60%); }
+.hero-card h2, .form-card h2, .login-card h2, .section-header h3 { color: #fff; letter-spacing: -.01em; font-weight: 700; }
+.eyebrow { color: #7eb1ff; letter-spacing: .22em; }
+.muted, .hero-card p, .brand-card p { color: var(--muted); }
+.menu-list a { border-radius: 0; letter-spacing: .04em; }
+.menu-list a.active, .menu-list a:hover { background: rgba(31, 109, 255, .22); box-shadow: inset 3px 0 0 #6da4ff; }
+.stat-card:nth-child(1) { box-shadow: inset 0 0 0 1px var(--line), inset 0 3px 0 var(--tri); }
+.stat-card:nth-child(2) { box-shadow: inset 0 0 0 1px var(--line), inset 0 3px 0 var(--cir); }
+.stat-card:nth-child(3) { box-shadow: inset 0 0 0 1px var(--line), inset 0 3px 0 var(--squ); }
+.stat-card strong { color: #fff; font-weight: 700; letter-spacing: -.01em; }
+.stat-card span, .stat-card small { color: var(--muted); }
+
+/* Tabel */
+.table-responsive { border-color: var(--line); border-radius: 0; }
+.table { background: transparent; }
+.table th { background: rgba(31, 109, 255, .1); color: #7eb1ff; letter-spacing: .14em; }
+.table th, .table td { border-color: var(--line); color: var(--text); }
+.table tbody tr:hover { background: rgba(31, 109, 255, .1); }
+.badge { background: rgba(109, 164, 255, .14); color: #a9c8ff; border-radius: 0; }
+.empty-state { color: var(--muted); }
+
+/* Tombol diberi simbol pengontrol */
+.btn { border-radius: 0; font-weight: 700; letter-spacing: .04em; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); }
+.btn:hover { filter: brightness(1.15); }
+.btn-primary { background: #1f6dff; box-shadow: none; color: #fff; }
+.btn-primary::before { content: "\2715"; font-size: .8em; }
+.btn-secondary, .btn-light { background: rgba(126, 177, 255, .14); color: #cfe0ff; }
+.btn-edit { background: rgba(57, 214, 166, .16); color: var(--tri); }
+.btn-delete { background: rgba(255, 93, 108, .16); color: var(--cir); }
+
+/* Form dan masuk */
+.form-group label { color: #a9b7d6; font-weight: 600; letter-spacing: .03em; }
+.form-group input, .form-group select { background: #060a18; border: 1px solid var(--line); border-radius: 0; color: #fff; }
+.form-group input:focus, .form-group select:focus { border-color: #6da4ff; box-shadow: 0 0 0 3px rgba(109, 164, 255, .2); }
+.form-group select option { background: #0d1328; }
+.auth-hero { border: 0; border-radius: 0; clip-path: var(--cut); background: linear-gradient(160deg, rgba(4, 6, 14, .45), rgba(31, 109, 255, .78)), url('https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&fit=crop&w=1200&q=80') center/cover; }
+.auth-hero h1 { font-weight: 700; letter-spacing: -.02em; }
+.login-note { background: rgba(126, 177, 255, .08); border-color: var(--line); color: var(--muted); border-radius: 0; }
+.alert-error { background: rgba(255, 93, 108, .15); color: #ffb3bb; border-radius: 0; }
+
+/* Tabel lebar tidak boleh mendorong halaman keluar layar */
+.main-content, .content-card { min-width: 0; }
+
+.dt-bar { position: relative; z-index: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 18px 0 12px; }
+.dt-bar input { flex: 1; min-width: 200px; min-height: 44px; padding: 8px 14px; background: #060a18; border: 1px solid var(--line); color: #fff; font: inherit; }
+.dt-bar button { min-height: 44px; padding: 8px 16px; border: 0; background: rgba(126, 177, 255, .14); color: #cfe0ff; font: 700 .86rem "Chakra Petch", sans-serif; cursor: pointer; }
+.dt-count { font: 600 .8rem "Chakra Petch", sans-serif; color: var(--muted); }
+
+.action-group form { margin: 0; }
+.lp-months { display: flex; align-items: stretch; gap: clamp(6px, 1.4vw, 16px); height: 230px; padding-top: 4px; }
+.lp-month { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 6px; }
+.lp-month i { display: block; width: min(100%, 54px); background: #6da4ff; border-radius: 4px 4px 0 0; }
+.lp-month small { font: 600 .74rem "Chakra Petch", sans-serif; color: var(--text); white-space: nowrap; }
+.lp-month span { font: 500 .78rem "Chakra Petch", sans-serif; color: var(--muted); }
+.lp-table { min-width: 520px; }
+.lp-bar { display: block; height: 3px; margin-top: 7px; background: #6da4ff; border-radius: 2px; }

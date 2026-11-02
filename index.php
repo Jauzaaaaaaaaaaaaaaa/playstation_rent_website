@@ -23,6 +23,11 @@ $result = $conn->query("SELECT * FROM dataps ORDER BY id DESC");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Rental Playstation</title>
     <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atelier/atelier.css">
+<link rel="stylesheet" href="atelier/theme.css">
+<script src="atelier/theme.js"></script>
+<script src="atelier/atelier.js"></script>
 </head>
 <body>
 
@@ -38,6 +43,7 @@ $result = $conn->query("SELECT * FROM dataps ORDER BY id DESC");
 
         <nav class="menu-list">
             <a class="active" href="index.php">Dashboard</a>
+            <a href="laporan.php">Laporan</a>
             <a href="tambah.php">Tambah Data</a>
             <a href="logout.php">Logout</a>
         </nav>
@@ -107,9 +113,11 @@ $result = $conn->query("SELECT * FROM dataps ORDER BY id DESC");
                                     <td>
                                         <div class="action-group">
                                             <a href="edit.php?id=<?php echo (int) $row['id']; ?>" class="btn btn-edit">Edit</a>
-                                            <a href="hapus.php?id=<?php echo (int) $row['id']; ?>"
-                                               class="btn btn-delete"
-                                               onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
+                                            <form action="hapus.php" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                                                <?php echo csrf_field(); ?>
+                                                <input type="hidden" name="id" value="<?php echo (int) $row['id']; ?>">
+                                                <button type="submit" class="btn btn-delete">Hapus</button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>

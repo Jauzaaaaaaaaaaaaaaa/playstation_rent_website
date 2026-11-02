@@ -1,5 +1,6 @@
 <?php
 include "auth.php";
+require_post_csrf();
 include "koneksi.php";
 
 $nama = trim($_POST['nama'] ?? '');
@@ -8,8 +9,10 @@ $jenis = trim($_POST['jenis'] ?? '');
 $durasi = (int) ($_POST['durasi'] ?? 0);
 $harga = (int) ($_POST['harga'] ?? 0);
 
-if ($nama == "" || $no_hp == "" || $jenis == "" || $durasi <= 0 || $harga < 0) {
-    die("Data yang diinput tidak valid.");
+$salah = validasi_rental($nama, $no_hp, $jenis, $durasi, $harga);
+if ($salah !== null) {
+    http_response_code(422);
+    exit(htmlspecialchars($salah));
 }
 
 $stmt = $conn->prepare("INSERT INTO dataps (nama, no_hp, jenis, durasi, harga) VALUES (?, ?, ?, ?, ?)");
@@ -18,4 +21,3 @@ $stmt->execute();
 
 header("Location: index.php");
 exit;
-?>

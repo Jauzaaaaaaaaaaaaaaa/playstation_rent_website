@@ -26,6 +26,11 @@ if (!$data) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Data - Rental Playstation</title>
     <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atelier/atelier.css">
+<link rel="stylesheet" href="atelier/theme.css">
+<script src="atelier/theme.js"></script>
+<script src="atelier/atelier.js"></script>
 </head>
 <body>
 
@@ -41,6 +46,7 @@ if (!$data) {
         </div>
 
         <form action="update.php" method="POST" class="modern-form">
+            <?php echo csrf_field(); ?>
             <input type="hidden" name="id" value="<?php echo (int) $data['id']; ?>">
 
             <div class="form-grid">
